@@ -22,3 +22,12 @@ if st.button("Scrape Site"):
             st.text_area("DOM content", cleaned_content, height=300)
     else:
         st.write("Must enter valid URL.")
+
+if "dom_content" in st.session_state:
+    parse_description = st.text_area("Describe what you want to parse.")
+
+    if st.button("Parse Content"):
+        if parse_description:
+            st.write("Parsing the content")
+            
+            dom_chunks = split_dom_content(st.session_state.dom_content)
